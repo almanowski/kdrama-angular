@@ -112,6 +112,20 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+ // Get fav drama
+ getFavDrama(): Observable<any> {
+  const token = localStorage.getItem('token');
+  const username = localStorage.getItem('user')
+  return this.http
+    .get(apiURL + `users/${username}/favs`, {
+      headers: new HttpHeaders
+        ({
+          Authorization: 'Bearer' + token,
+        })
+      })
+    .pipe(map(this.extractResponseData), catchError(this.handleError));
+}
+
   // Add fav drama
   postFavDrama(dramaId: string): Observable<any> {
     const token = localStorage.getItem('token');
