@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'kdrama-angular';
+
+  constructor(public dialog: MatDialog) {}
+
+  // Opens registration dialog when signup button is clicked
+  openUserRegistrationDialog(): void {
+    this.dialog.open(UserRegistrationFormComponent, {
+      // Assigning the dialog a width
+      width: '280px'
+    });
+  }
+
+    // Opens login dialog when signup button is clicked
+    openUserLoginDialog(): void {
+      this.dialog.open(UserLoginFormComponent, {
+        // Assigning the dialog a width
+        width: '280px'
+      });
+    }
 }
