@@ -4,12 +4,12 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'
 
 // Declaring the api url will provide data for the client app
-const apiURL = 'https://mykdrama-api.herokuapp.com';
+const apiURL = 'https://mykdrama-api.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserRegistrationService {
+export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HtpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) { }
@@ -18,7 +18,6 @@ export class UserRegistrationService {
 
   // Post registration
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http
       .post(apiURL + 'users', userDetails)
       .pipe(catchError(this.handleError));
@@ -26,7 +25,6 @@ export class UserRegistrationService {
 
   // Post login
   public userLogin(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http
       .post(apiURL + 'login', userDetails)
       .pipe(catchError(this.handleError));
@@ -198,6 +196,6 @@ export class UserRegistrationService {
         `Error body is: ${error.error}`
       );
     }
-    return throwError('Something bad happened; please try again later.'    );
+    return throwError('Something bad happened; please try again later.');
   }
 }
