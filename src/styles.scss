@@ -37,3 +37,9 @@ $kdrama-angular-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.action-success {
+  .mat-simple-snackbar-action {
+      color: #33ff47 !important;
+  }
+}
