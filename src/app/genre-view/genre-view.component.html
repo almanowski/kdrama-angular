@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title class="dialog-title">Genres</mat-card-title>
+        <button mat-raised-button (click)="onNoClick()" color="basic">
+            X
+        </button>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let data of data.genres">
+                <h4 mat-line class="list-title">{{data.Name}}</h4>
+                <p mat-line class="list-des">{{data.Description}}</p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+        
+   
+    </mat-card-content>
+</mat-card>

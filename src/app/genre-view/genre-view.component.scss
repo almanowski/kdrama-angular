@@ -1,0 +1,29 @@
+.dialog-title {
+  width: 129px;
+}
+
+.mat-raised-button {
+  padding: 0 0 ;
+  min-width: 32px !important;
+  top: -11px;
+  right: -386px;
+}
+
+.list-title {
+  font-weight: bolder !important;
+}
+
+
+.mat-line{
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
+}
+
+.mat-list .mat-list-item{
+  height:initial!important;
+  margin-bottom: 10px !important;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0 16px 10px !important;
+}
