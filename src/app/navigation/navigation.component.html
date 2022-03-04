@@ -1,0 +1,24 @@
+<mat-toolbar class="nav">
+    <a routerLink="/dramas" class="nav-link" >
+        <img alt="myDramas" src="https://dl.dropboxusercontent.com/s/2cn6gjz6mmtta3z/logo1.svg?dl=0" 
+            crossOrigin ="anonymous" class="nav-logo" 
+        />
+    </a>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="nav-icon">
+        <mat-icon>account_circle</mat-icon>
+        <span>{{username}}</span>
+    </button>
+    <mat-menu #menu="matMenu">
+        <a routerLink="/profile" class="nav-profile-link">
+        <button mat-menu-item>
+            <mat-icon>manage_accounts</mat-icon>
+            <span>Profile</span>
+        </button>
+    </a>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="onLoggedOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+      </mat-menu>
+</mat-toolbar>
