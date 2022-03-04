@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Import API calls
 import { FetchApiDataService } from '../fetch-api-data.service';
@@ -22,7 +23,8 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,15 +32,18 @@ export class UserLoginFormComponent implements OnInit {
 
   // Sends the form inputs to the backend
   loginUser(): void {
-    this.fetchApiData.userLogin(this.userData).subscribe(() => {
+    this.fetchApiData.userLogin(this.userData).subscribe((response) => {
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('Username', response.user.Username);
       // Successful user registration
       this.dialogRef.close(); // This will close the modal on success
       this.snackBar.open('Login successful', 'OK', {
         duration: 2000,
         panelClass: 'action-success'
       });
+      this.router.navigate(['dramas']);
     }, (response) => {
-      this.snackBar.open(response, 'OK', {
+      this.snackBar.open('Login failed', 'OK', {
         duration: 2000
       });
     });
