@@ -1,0 +1,16 @@
+<app-navigation></app-navigation>
+<div>
+    <h1>{{user.Username}}</h1>
+    <p>{{user.Email}}</p>
+    <button mat-button color="primary" (click)="deleteUser()">Delete</button>
+</div>
+
+<mat-card *ngFor="let fav of favs; let i=index;" class="card">
+    <mat-card-header>
+        <mat-card-title class="card-title">{{fav.Title}}</mat-card-title>
+        <mat-icon (click)="deleteUserFav(fav._id)" class="card-icon">favorite</mat-icon>
+    </mat-card-header>
+
+    <!-- <img src={{fav.ImagePath}} alt={{fav.Title}} class="card-img" /> -->
+</mat-card>
+
