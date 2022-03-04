@@ -35,9 +35,8 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http
       .get(apiURL + 'korean-dramas', {
-        headers: new HttpHeaders
-          ({
-            Authorization: 'Bearer' + token,
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -50,7 +49,7 @@ export class FetchApiDataService {
       .get(apiURL + `korean-dramas/${title}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -63,7 +62,7 @@ export class FetchApiDataService {
       .get(apiURL + `directors/${name}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -76,7 +75,7 @@ export class FetchApiDataService {
       .get(apiURL + 'genres', {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -89,7 +88,7 @@ export class FetchApiDataService {
       .get(apiURL + `directors/${genre}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -99,12 +98,12 @@ export class FetchApiDataService {
   // Get user
   getUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
+    const username = localStorage.getItem('Username') || '';
     return this.http
       .get(apiURL + `users/${username}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -112,13 +111,13 @@ export class FetchApiDataService {
 
  // Get fav drama
  getFavDrama(): Observable<any> {
+  const username = localStorage.getItem('Username') || '';
   const token = localStorage.getItem('token');
-  const username = localStorage.getItem('user')
   return this.http
     .get(apiURL + `users/${username}/favs`, {
       headers: new HttpHeaders
         ({
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
     .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -127,12 +126,12 @@ export class FetchApiDataService {
   // Add fav drama
   postFavDrama(dramaId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
+    const username = localStorage.getItem('Username') || '';
     return this.http
-      .post(apiURL + `users/${username}/favs/${dramaId}`, {
+      .post(apiURL + `users/${username}/favs/${dramaId}`, null, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -141,26 +140,26 @@ export class FetchApiDataService {
   // Update user info
   putUserInfo(): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
+    const username = localStorage.getItem('Username') || ''
     return this.http
       .put(apiURL + `users/${username}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Delete user
-  deleteUser(): Observable<any> {
+   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
+    const username = localStorage.getItem('Username');
     return this.http
       .delete(apiURL + `users/${username}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -169,12 +168,12 @@ export class FetchApiDataService {
   // Add fav drama
   deleteFavDrama(dramaId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
+    const username = localStorage.getItem('Username') || '';
     return this.http
       .delete(apiURL + `users/${username}/favs/${dramaId}`, {
         headers: new HttpHeaders
           ({
-            Authorization: 'Bearer' + token,
+            Authorization: 'Bearer ' + token,
           })
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
