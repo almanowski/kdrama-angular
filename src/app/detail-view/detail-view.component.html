@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title class="dialog-title">{{data.drama.Title}}</mat-card-title>
+        <button mat-raised-button (click)="onNoClick()" color="basic">
+            X
+        </button>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>Episodes: {{data.drama.Episodes}}</p>
+        <p>Releasyear: {{data.drama.ReleasYear}}</p>
+        <p>Writer: {{data.drama.Writer}}</p>
+        <p>{{data.drama.Description}}</p>
+    </mat-card-content>
+</mat-card>
