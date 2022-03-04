@@ -1,0 +1,39 @@
+.main-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.main-card {
+    margin-top: 250px;
+    padding: 30px;
+}
+
+.mat-card-actions {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main-logo {
+    height: 50px;
+}
+
+.main-header {
+    margin-bottom: 20px;
+}
+
+::ng-deep .mat-card-header-text {
+    align-self: flex-end !important;
+    margin: 0 10px !important;
+}
+
+.main-button {
+    background-color: #07004d;
+    color: white;
+    width: 100px;
+}
+
+.main-button:hover {
+    opacity: 0.8;
+}
