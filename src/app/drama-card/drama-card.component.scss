@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 50px;
+
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  width: 213px;
+  margin-left: -13px;
+}
+
+.card-sub {
+  margin-left: -13px;
+}
+
+.card-img {
+  width: 16rem;
+  height: 22rem;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mat-card-actions .mat-button {
+  margin: 0 0;
+}
+
+.card-button {
+  color: #07004d;
+}
+
+
