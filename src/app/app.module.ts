@@ -24,6 +24,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
@@ -34,6 +35,7 @@ import { GenreViewComponent } from './genre-view/genre-view.component';
 import { DetailViewComponent } from './detail-view/detail-view.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 
 
 // App routes
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
     GenreViewComponent,
     DetailViewComponent,
     NavigationComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    UserUpdateFormComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatMenuModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
