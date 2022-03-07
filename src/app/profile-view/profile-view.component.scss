@@ -1,0 +1,64 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 50px;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.user-name {
+  justify-self: end;
+  align-self: center;
+  margin-bottom: 0;
+}
+
+.user-email {
+  align-self: center;
+  margin-bottom: 0;
+}
+
+.update-btn {
+  background-color: #07004d;
+  color: white;
+}
+
+.update-btn:hover {
+  opacity: 0.8;
+}
+
+.delete-btn,
+.update-btn {
+  width: 100px;
+}
+  
+.card {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  width: 213px;
+  margin-left: -13px;
+}
+
+.card-img {
+  width: 16rem;
+  height: 22rem;
+}
+
+.button-confirmation {
+  background-color: #07004d;
+  color: white;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mat-card-actions .mat-button {
+  margin: 0 0;
+}
