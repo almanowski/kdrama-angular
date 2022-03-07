@@ -138,11 +138,11 @@ export class FetchApiDataService {
   }
 
   // Update user info
-  putUserInfo(): Observable<any> {
+  putUserInfo(userData:any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('Username') || ''
     return this.http
-      .put(apiURL + `users/${username}`, {
+      .put(apiURL + `users/${username}`, userData, {
         headers: new HttpHeaders
           ({
             Authorization: 'Bearer ' + token,
