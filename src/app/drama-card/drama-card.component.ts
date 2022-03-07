@@ -29,7 +29,6 @@ export class DramaCardComponent implements OnInit {
   getDramas(): void {
     this.fetchApiData.getAllDramas().subscribe((resp: any) => { 
       this.dramas = resp;
-      console.log(this.dramas);
       return this.dramas;
     });
   }
@@ -37,7 +36,7 @@ export class DramaCardComponent implements OnInit {
   // Opens Director dialog 
   openDirectorDialog(director:object): void {
     this.dialog.open(DirectorViewComponent, {
-      width: '350px',
+      width: '650px',
       data: {director}
     });
   }
@@ -62,7 +61,6 @@ export class DramaCardComponent implements OnInit {
   getUserFavs(): void {
     this.fetchApiData.getFavDrama().subscribe((resp: any) => { 
       this.userFavs = resp.FavDramas;
-      console.log(this.userFavs)
       return this.userFavs;
     });
   }
@@ -76,14 +74,14 @@ export class DramaCardComponent implements OnInit {
   // Post user fav
   postUserFav(id: string): void {
     this.fetchApiData.postFavDrama(id).subscribe((resp: any) => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
 
   // Delete user fav
   deleteUserFav(id: string): void {
     this.fetchApiData.deleteFavDrama(id).subscribe((resp: any) => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
 
