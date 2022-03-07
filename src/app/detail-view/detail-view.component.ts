@@ -11,9 +11,5 @@ export class DetailViewComponent {
     public dialogRef: MatDialogRef<DetailViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {drama: any}
   ) { }
-  
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 }

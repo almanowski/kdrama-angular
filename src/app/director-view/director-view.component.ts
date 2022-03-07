@@ -11,9 +11,5 @@ export class DirectorViewComponent {
     public dialogRef: MatDialogRef<DirectorViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {director: any}
   ) { }
-  
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 }
