@@ -4,6 +4,10 @@
             crossOrigin ="anonymous" class="nav-logo" 
         />
     </a>
+    <div *ngIf="router.url === '/profile'">
+        <a routerLink="/dramas">Dramas</a>
+    </div>
+    <div *ngIf="router.url === '/dramas'"></div>
     <button mat-icon-button [matMenuTriggerFor]="menu" class="nav-icon">
         <mat-icon>account_circle</mat-icon>
         <span>{{username}}</span>
