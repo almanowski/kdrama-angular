@@ -16,9 +16,5 @@ export class GenreViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 }
