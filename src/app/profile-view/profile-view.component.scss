@@ -5,6 +5,15 @@
     margin: 50px;
 }
 
+.back-btn {
+  border-style: solid;
+  border-radius: 30px;
+  padding: 2px;
+  position: absolute;
+  top: 85px;
+  left: 60px;
+}
+
 .user-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -32,7 +41,7 @@
 
 .delete-btn,
 .update-btn {
-  width: 100px;
+  width: 125px;
 }
   
 .card {
@@ -62,3 +71,34 @@
 .mat-card-actions .mat-button {
   margin: 0 0;
 }
+
+@media (max-width: 800px){
+  .back-btn {
+    top: 75px;
+    left: 30px;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 600px){
+  .user-info{
+    margin-right: 80px;
+    margin-bottom: 30px;
+  }
+
+  .update-btn {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 460px){
+  .user-info{
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 340px){
+  .update-btn {
+    margin-bottom: 15px;
+  }
+}
+

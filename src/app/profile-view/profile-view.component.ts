@@ -40,6 +40,10 @@ export class ProfileViewComponent implements OnInit {
     }).afterClosed().subscribe(()=> this.ngOnInit());
   }
 
+  openDramaCard(): void {
+    this.router.navigate(['/dramas'])
+  }
+
   getFavDramas(): void {
     this.fetchApiData.getAllDramas().subscribe((resp: any) => { 
       let favDramaId = this.user.FavDramas
