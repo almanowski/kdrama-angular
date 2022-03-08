@@ -1,4 +1,11 @@
 .dialog-title {
     margin-left: -15px;
   }
-  
+
+
+@media (max-width: 460px){
+  .dialog-card {
+    overflow: auto;
+    max-height: 300px;
+  }
+}
