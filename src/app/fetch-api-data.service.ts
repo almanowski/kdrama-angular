@@ -6,6 +6,10 @@ import { catchError, map } from 'rxjs/operators'
 // Declaring the api url will provide data for the client app
 const apiURL = 'https://mykdrama-api.herokuapp.com/';
 
+// Getting localStorage data for api access
+const token = localStorage.getItem('token');
+const username = localStorage.getItem('Username') || '';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,25 +18,36 @@ export class FetchApiDataService {
   // This will provide HtpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) { }
 
-  // Making the api call for the user registration endpoint
-
-  // Post registration
+  /** POST - Registration
+   * Make api call to the /user endpoint
+   * @function userRegistration
+   * @param userDetails {Username: <string>, Password: <string>, Email: <string>, Birthday: <sting>}
+   * @returns a new user object in JSON format
+   */
   public userRegistration(userDetails: any): Observable<any> {
     return this.http
       .post(apiURL + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
 
-  // Post login
+  /** POST - Login
+   * Make api call to the /login endpoint
+   * @function userLogin
+   * @param userDetails {Username: <string>, Password: <string>}
+   * @returns a JSON object containing the user details and a JWT token
+   */
   public userLogin(userDetails: any): Observable<any> {
     return this.http
       .post(apiURL + 'login', userDetails)
       .pipe(catchError(this.handleError));
   }
 
-  // Get drama list
+  /** GET - Drama list 
+   * Make api call to the /korean-dramas endpoint
+   * @function getAllDramas
+   * @returns a JSON object containing an array of dramas
+   */
   getAllDramas(): Observable<any> {
-    const token = localStorage.getItem('token');
     return this.http
       .get(apiURL + 'korean-dramas', {
         headers: new HttpHeaders({
@@ -42,9 +57,13 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get one drama
-  getOneDramas(title: string): Observable<any> {
-    const token = localStorage.getItem('token');
+  /** GET - Specific drama
+   * Make api call to the /korean-dramas/[title] endpoint
+   * @function getOneDrama
+   * @param title <string>
+   * @returns a JSON object containing the drama details
+   */
+  getOneDrama(title: string): Observable<any> {
     return this.http
       .get(apiURL + `korean-dramas/${title}`, {
         headers: new HttpHeaders
@@ -55,9 +74,13 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get director
+  /** GET - Specific director
+   * Make api call to the /directors/[name] endpoint
+   * @function getDirector
+   * @param name <string>
+   * @returns a JSON object containing the director details
+   */
   getDirector(name: string): Observable<any> {
-    const token = localStorage.getItem('token');
     return this.http
       .get(apiURL + `directors/${name}`, {
         headers: new HttpHeaders
@@ -68,9 +91,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get genres
+  /** GET - Genre list
+   * Make api call to the /genres endpoint
+   * @function getGenres
+   * @returns a JSON object containing an array of genres
+   */
   getGenres(): Observable<any> {
-    const token = localStorage.getItem('token');
     return this.http
       .get(apiURL + 'genres', {
         headers: new HttpHeaders
@@ -81,9 +107,13 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get one genre
+  /** GET - Specific genre
+   * Make api call to the /genres/[name] endpoint
+   * @function getDirector
+   * @param genre <string>
+   * @returns a JSON object containing the genre details
+   */
   getOneGenre(genre: string): Observable<any> {
-    const token = localStorage.getItem('token');
     return this.http
       .get(apiURL + `directors/${genre}`, {
         headers: new HttpHeaders
@@ -95,10 +125,12 @@ export class FetchApiDataService {
   }
 
 
-  // Get user
+  /** GET - Specific user
+   * Make api call to the /users/[username] endpoint
+   * @function getUser
+   * @returns a JSON object containing the user details
+   */
   getUser(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('Username') || '';
     return this.http
       .get(apiURL + `users/${username}`, {
         headers: new HttpHeaders
@@ -109,10 +141,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
- // Get fav drama
+  /** GET - Favorite drama list
+   * Make api call to the /users/[username] endpoint
+   * @function getUser
+   * @returns a JSON object containing an array of the favorite dramas
+   */
  getFavDrama(): Observable<any> {
-  const username = localStorage.getItem('Username') || '';
-  const token = localStorage.getItem('token');
   return this.http
     .get(apiURL + `users/${username}/favs`, {
       headers: new HttpHeaders
@@ -123,10 +157,13 @@ export class FetchApiDataService {
     .pipe(map(this.extractResponseData), catchError(this.handleError));
 }
 
-  // Add fav drama
+  /** POST - Favorite drama list
+   * Make api call to the /users/[username]/favs/[dramaId] endpoint
+   * @function postFavDrama
+   * @param dramaId <string>
+   * @returns a JSON object containing an array of the favorite dramas
+   */
   postFavDrama(dramaId: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('Username') || '';
     return this.http
       .post(apiURL + `users/${username}/favs/${dramaId}`, null, {
         headers: new HttpHeaders
@@ -137,10 +174,13 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Update user info
+  /** PUT - User update
+   * Make api call to the /user/[username] endpoint
+   * @function putUserInfo
+   * @param userData {Username: <string>, Password: <string>, Email: <string>, Birthday: <sting>}
+   * @returns an updated user object in JSON format
+   */
   putUserInfo(userData:any): Observable<any> {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('Username') || ''
     return this.http
       .put(apiURL + `users/${username}`, userData, {
         headers: new HttpHeaders
@@ -151,24 +191,29 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Delete user
-   public deleteUser(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('Username');
-    return this.http
-      .delete(apiURL + `users/${username}`, {
-        headers: new HttpHeaders
-          ({
-            Authorization: 'Bearer ' + token,
-          })
+  /** DELETE - Specific user
+   * Make api call to the /users/[username] endpoint
+   * @function deleteUser
+   * @returns deletes user profile
+   */
+  public deleteUser(): Observable<any> {
+  return this.http
+    .delete(apiURL + `users/${username}`, {
+      headers: new HttpHeaders
+        ({
+          Authorization: 'Bearer ' + token,
         })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      })
+    .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Add fav drama
+  /** DELETE - Favorite drama list
+   * Make api call to the /users/[username]/favs/[dramaId] endpoint
+   * @function deleteFavDrama
+   * @param dramaId <string>
+   * @returns a JSON object containing an updated array of the favorite dramas
+   */
   deleteFavDrama(dramaId: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('Username') || '';
     return this.http
       .delete(apiURL + `users/${username}/favs/${dramaId}`, {
         headers: new HttpHeaders

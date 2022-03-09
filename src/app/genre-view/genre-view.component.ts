@@ -1,4 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+/**
+ * This Dialog is displays specific genres
+ * @module DirectorViewComponent 
+ */
+
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -6,13 +11,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './genre-view.component.html',
   styleUrls: ['./genre-view.component.scss']
 })
-export class GenreViewComponent implements OnInit {
+
+/** 
+ * Accesses genre data from DramaCardComponent
+ * @param data: {genres:any}
+ */ 
+export class GenreViewComponent {
 
   constructor(
     public dialogRef: MatDialogRef<GenreViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data:  {genres: any}
-  ) {
-  console.log(data.genres) }
+  ) {}
 
   ngOnInit(): void {
   }

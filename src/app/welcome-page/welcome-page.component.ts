@@ -1,3 +1,8 @@
+/**
+ * The welcome page is the first displayed page with the options register and log in.
+ * @module WelcomePageComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -15,7 +20,10 @@ export class WelcomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Opens registration dialog when signup button is clicked
+  /**
+   * Opens registration dialog
+   * @module UserRegistrationFormComponent
+   */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       // Assigning the dialog a width
@@ -23,7 +31,10 @@ export class WelcomePageComponent implements OnInit {
     });
   }
 
-  // Opens login dialog when signup button is clicked
+   /**
+   * Opens login dialog
+   * @module UserLoginFormComponent
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       // Assigning the dialog a width

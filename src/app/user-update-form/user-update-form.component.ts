@@ -1,3 +1,8 @@
+/**
+ * This Dialog is used to update users
+ * @module UserUpdateFormComponent 
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 
 // Import API calls
@@ -15,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-update-form.component.scss']
 })
 export class UserUpdateFormComponent implements OnInit {
-
+  // Gets the input data of the user and stores them in userData
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
@@ -31,6 +36,12 @@ export class UserUpdateFormComponent implements OnInit {
     return localStorage.getItem('Username');
   }
 
+  /** 
+   * Sends the form inputs (this.userData) to the backend (fetchApiData.putUserInfo)
+   * @function registerUser
+   * @param this.userData {object}
+   * @returns Snackbar message
+   */
   updateUser(): void {
     this.fetchApiData.putUserInfo(this.userData).subscribe((res) => {
       localStorage.setItem('Username', res.Username)

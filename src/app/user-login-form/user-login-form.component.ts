@@ -1,3 +1,9 @@
+/**
+ * This Dialog is used to log in users
+ * @module UserLoginComponent
+ */
+
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -17,7 +23,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
-
+  // Gets the input data of the user and stores them in userData
   @Input() userData = { Username: '', Password: '' };
 
   constructor(
@@ -30,7 +36,12 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Sends the form inputs to the backend
+  /** 
+   * Sends the form inputs (this.userData) to the backend (fetchApiData.userLogin)
+   * @function loginUser
+   * @param this.userData {object}
+   * @returns Snackbar message
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
       localStorage.setItem('token', response.token);

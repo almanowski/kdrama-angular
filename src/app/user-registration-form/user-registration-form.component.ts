@@ -1,3 +1,8 @@
+/**
+ * This Dialog is used to register new users
+ * @module UserRegistrationComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 
 // Import API calls
@@ -9,14 +14,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
   styleUrls: ['./user-registration-form.component.scss']
 })
 export class UserRegistrationFormComponent implements OnInit {
-
+  // Gets the input data of the user and stores them in userData
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
@@ -28,7 +32,12 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Sends the form inputs to the backend
+  /** 
+   * Sends the form inputs (this.userData) to the backend (fetchApiData.userRegistration)
+   * @function registerUser
+   * @param this.userData {object}
+   * @returns Snackbar message
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(() => {
       // Successful user registration

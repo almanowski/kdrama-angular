@@ -1,3 +1,8 @@
+/**
+ * This component renders drama collection and the NavigationComponent
+ * @module DramaCardComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,7 +30,11 @@ export class DramaCardComponent implements OnInit {
     this.getUserFavs();
   }
 
-  // Get all dramas
+  /** 
+   * Gets all dramas from the backend (fetchApiData.getAllDramas)
+   * @function getDramas
+   * @returns An array of drama objects
+   */
   getDramas(): void {
     this.fetchApiData.getAllDramas().subscribe((resp: any) => { 
       this.dramas = resp;
@@ -33,15 +42,23 @@ export class DramaCardComponent implements OnInit {
     });
   }
 
-  // Opens Director dialog 
-  openDirectorDialog(director:object): void {
+  /**
+   * Opens director dialog
+   * @param director {object}
+   * @module DirectorViewComponent
+   */
+  openDirectorDialog(director: object): void {
     this.dialog.open(DirectorViewComponent, {
       width: '650px',
       data: {director}
     });
   }
 
-  // Opens Genre dialog 
+  /**
+   * Opens genre dialog
+   * @param genres {any}
+   * @module GenreViewComponent
+   */
   openGenresDialog(genres: any): void {
     this.dialog.open(GenreViewComponent, {
       width: '650px',
@@ -49,7 +66,11 @@ export class DramaCardComponent implements OnInit {
     });
   }
 
-  // Opens Details dialog 
+  /**
+   * Opens details dialog
+   * @param drama {any}
+   * @module DetailViewComponent
+   */
   openDetailsDialog(drama: any): void {
     this.dialog.open(DetailViewComponent, {
       width: '650px',
@@ -57,7 +78,11 @@ export class DramaCardComponent implements OnInit {
     });
   }
 
-  // User favs
+  /** 
+   * Gets all the user favorite dramas from the backend (fetchApiData.getFavDrama)
+   * @function getUserFavs
+   * @returns An array of drama objects
+   */
   getUserFavs(): void {
     this.fetchApiData.getFavDrama().subscribe((resp: any) => { 
       this.userFavs = resp.FavDramas;
@@ -65,20 +90,34 @@ export class DramaCardComponent implements OnInit {
     });
   }
 
-  // Check favs
+  /** 
+   * Checks if drama is in user favorite list
+   * @function checkFavs
+   * @returns Boolean
+   */
   checkFavs(id: string): boolean {
     let favs = this.userFavs.indexOf(id) > -1;
     return favs;
   }
 
-  // Post user fav
+  /**
+   * Sends the input (id) to the backend (fetchApiData.postFavDrama)
+   * @function postUserFavs
+   * @param id {string}
+   * @returns An updated array of drama objects
+   */
   postUserFav(id: string): void {
     this.fetchApiData.postFavDrama(id).subscribe((resp: any) => {
       this.ngOnInit();
     });
   }
 
-  // Delete user fav
+  /**
+   * Sends the input (id) to the backend (fetchApiData.deleteFavDrama)
+   * @function deleteUserFavs
+   * @param id {string}
+   * @returns An updated array of drama objects
+   */
   deleteUserFav(id: string): void {
     this.fetchApiData.deleteFavDrama(id).subscribe((resp: any) => {
       this.ngOnInit();
