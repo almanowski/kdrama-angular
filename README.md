@@ -1,27 +1,51 @@
-# KdramaAngular
+# Angular App (kDrama App)
+![Badge](https://img.shields.io/badge/demo-online-green)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+Creating this App is part of my [CF Full-Stack Web Development Program](https://careerfoundry.com/en/courses/become-a-web-developer/).
 
-## Development server
+Live Demo [here](https://almanowski.github.io/kdrama-angular/welcome).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<p>&nbsp;</p>
 
-## Code scaffolding
+## 📝 Objective
+Using Angular, build the client-side for an application called kDrama App based on
+its existing server-side code (REST API and database), with supporting documentation.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<p>&nbsp;</p>
 
-## Build
+## 🗝️ Key Features
+* **Welcome page**
+    * Allows users to either register or login
+* **Login view**
+    * Allows users to log in with a username and password
+* **Registration view**
+   * Allows new users to register (username, password, email, birthday)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* **Navigation view**
+   * Allows users to got to their profile 
+   * Allows users to log out
 
-## Running unit tests
+* **Drama Card**
+    * Returns a list of all Korean dramas to the user (each listed item with an image and title)
+    * Ability to select a drama for more details about the director, the genres or general infos
+    * Allows users to add a drama to their list of favourites
+* **Details view**
+    * Returns data (description, episodes, release year and writer) about a single drama to the user
+* **Genre view**
+    * Returns data about the genres, with names and descriptions
+* **Director view**
+    * Returns data about a director (name, bio, birth year, death year)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+* **Profile view**
+    * Allows existing users to deregister
+    * Displays favourite dramas
+    * Allows users to remove a drama from their list of favourites
+* **Update view**
+    * Allows users to update their user info (username, password, email, date of birth)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<p>&nbsp;</p>
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 💻 Technologies Used
+* Node.js 16.13.0
+* Angular 13.2.4
